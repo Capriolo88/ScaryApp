@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer = null;
         }
 
-        int ringtoneResId = getResources().getIdentifier("RINGTONE", "raw", getPackageName());
+        int ringtoneResId = getResources().getIdentifier("ringtone", "raw", getPackageName());
         if (ringtoneResId == 0) {
             Toast.makeText(this, "File audio non trovato", Toast.LENGTH_SHORT).show();
             return;
