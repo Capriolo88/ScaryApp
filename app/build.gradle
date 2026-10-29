@@ -1,14 +1,13 @@
-
 plugins {
     id 'com.android.application'
 }
 
 android {
-    namespace 'com.example.simpleapp'
+    namespace 'it.capriolo.scaryapp'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.simpleapp"
+        applicationId "it.capriolo.scaryapp"
         minSdk 31
         targetSdk 34
         versionCode 1

@@ -7,7 +7,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SimpleJavaApp">
+        android:theme="@style/Theme.ScaryApp">
         <activity
             android:name="it.capriolo.scaryapp.MainActivity"
             android:exported="true">
