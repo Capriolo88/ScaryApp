@@ -8,8 +8,17 @@
 
     <Button
         android:id="@+id/playButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play ringtone" />
+        android:layout_width="220dp"
+        android:layout_height="72dp"
+        android:text="Play ringtone"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/stopButton"
+        android:layout_width="220dp"
+        android:layout_height="72dp"
+        android:text="Stop ringtone"
+        android:textSize="18sp" />
 
 </LinearLayout>
