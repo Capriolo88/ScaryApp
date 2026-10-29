@@ -18,19 +18,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button playButton = findViewById(R.id.playButton);
+        Button stopButton = findViewById(R.id.stopButton);
+
         playButton.setOnClickListener(v -> playRingtone());
+        stopButton.setOnClickListener(v -> stopRingtone());
     }
 
     private void playRingtone() {
-        if (mediaPlayer != null) {
-            if (mediaPlayer.isPlaying()) {
-                mediaPlayer.stop();
-            }
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
+        stopRingtone();
 
         int ringtoneResId = getResources().getIdentifier("ringtone", "raw", getPackageName());
+        if (ringtoneResId == 0) {
+            ringtoneResId = getResources().getIdentifier("RINGTONE", "raw", getPackageName());
+        }
+
         if (ringtoneResId == 0) {
             Toast.makeText(this, "File audio non trovato", Toast.LENGTH_SHORT).show();
             return;
@@ -47,20 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
             mediaPlayer.setVolume(1.0f, 1.0f);
             mediaPlayer.setLooping(true);
-
-            mediaPlayer.setOnCompletionListener(mp -> {
-                if (mp != null) {
-                    mp.start();
-                }
-            });
-
             mediaPlayer.start();
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    private void stopRingtone() {
         if (mediaPlayer != null) {
             if (mediaPlayer.isPlaying()) {
                 mediaPlayer.stop();
@@ -68,5 +60,11 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer = null;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopRingtone();
     }
 }
