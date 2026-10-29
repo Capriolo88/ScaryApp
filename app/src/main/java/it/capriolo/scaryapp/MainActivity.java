@@ -1,5 +1,6 @@
 package it.capriolo.scaryapp;
 
+import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.widget.Button;
@@ -37,10 +38,22 @@ public class MainActivity extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(this, ringtoneResId);
         if (mediaPlayer != null) {
+            mediaPlayer.setAudioAttributes(
+                    new AudioAttributes.Builder()
+                            .setUsage(AudioAttributes.USAGE_NOTIFICATION_RINGTONE)
+                            .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                            .build()
+            );
+
+            mediaPlayer.setVolume(1.0f, 1.0f);
+            mediaPlayer.setLooping(true);
+
             mediaPlayer.setOnCompletionListener(mp -> {
-                mp.release();
-                mediaPlayer = null;
+                if (mp != null) {
+                    mp.start();
+                }
             });
+
             mediaPlayer.start();
         }
     }
